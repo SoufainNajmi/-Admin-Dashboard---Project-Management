@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Project Management</title>
+</head> 
+<body>
+    <div class="admin-container">
+        <div class="sidebar">
+            <h2>🎯 Admin Panel</h2>
+            <div class="nav-item active" onclick="showSection('dashboard')">
+                <i>📊</i>
+                <span>Dashboard</span>
+            </div>
+            <div class="nav-item" onclick="showSection('projects')">
+                <i>📁</i>
+                <span>Projects</span>
+                <div class="notification-badge">12</div>
+            </div>
+            <div class="nav-item" onclick="showSection('messages')">
+                <i>💬</i>
+                <span>Messages</span>
+                <div class="notification-badge">5</div>
+            </div>
+            <div class="nav-item" onclick="showSection('analytics')">
+                <i>📈</i>
+                <span>Analytics</span>
+            </div>
+            <div class="nav-item" onclick="showSection('clients')">
+                <i>👥</i>
+                <span>Clients</span>
+            </div>
+            <div class="nav-item" onclick="showSection('settings')">
+                <i>⚙️</i>
+                <span>Settings</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="header">
+                <h1>Welcome back, Admin! 👋</h1>
+                <p>Here's what's happening with your projects today.</p>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div class="content-section active" id="dashboard">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon" style="background: linear-gradient(45deg, #4CAF50, #8BC34A);">📁</div>
+                        </div>
+                        <div class="stat-value">24</div>
+                        <div class="stat-label">Active Projects</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon" style="background: linear-gradient(45deg, #2196F3, #21CBF3);">👥</div>
+                        </div>
+                        <div class="stat-value">156</div>
+                        <div class="stat-label">Total Clients</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon" style="background: linear-gradient(45deg, #FF9800, #FFC107);">💬</div>
+                        </div>
+                        <div class="stat-value">89</div>
+                        <div class="stat-label">Unread Messages</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon" style="background: linear-gradient(45deg, #9C27B0, #E91E63);">💰</div>
+                        </div>
+                        <div class="stat-value">$45,230</div>
+                        <div class="stat-label">Monthly Revenue</div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Project Progress Overview</h3>
+                    <div class="chart">📊 Interactive Chart Would Be Here</div>
+                </div>
+            </div>
+
+            <!-- Projects Section -->
+            <div class="content-section" id="projects">
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>Status</label>
+                        <select onchange="filterProjects()">
+                            <option value="all">All Projects</option>
+                            <option value="active">Active</option>
+                            <option value="pending">Pending</option>
+                            <option value="completed">Completed</option>
+                            <option value="paused">Paused</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Client</label>
+                        <select onchange="filterProjects()">
+                            <option value="all">All Clients</option>
+                            <option value="client1">TechCorp Inc.</option>
+                            <option value="client2">StartupXYZ</option>
+                            <option value="client3">Enterprise Ltd.</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Date Range</label>
+                        <input type="date" onchange="filterProjects()">
+                    </div>
+                </div>
+
+                <div class="projects-grid" id="projectsGrid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">E-commerce Platform</div>
+                            <div class="project-status status-active">Active</div>
+                        </div>
+                        <div class="project-info">
+                            <p><strong>Client:</strong> TechCorp Inc.</p>
+                            <p><strong>Deadline:</strong> March 15, 2024</p>
+                            <p><strong>Budget:</strong> $25,000</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%;"></div>
+                            </div>
+                            <p><strong>Progress:</strong> 75% Complete</p>
+                        </div>
+                        <div class="project-actions">
+                            <button class="btn btn-primary" onclick="editProject(1)">✏️ Edit</button>
+                            <button class="btn btn-secondary" onclick="viewProject(1)">👁️ View</button>
+                            <button class="btn btn-danger" onclick="deleteProject(1)">🗑️ Delete</button>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">Mobile App Development</div>
+                            <div class="project-status status-pending">Pending</div>
+                        </div>
+                        <div class="project-info">
+                            <p><strong>Client:</strong> StartupXYZ</p>
+                            <p><strong>Deadline:</strong> April 20, 2024</p>
+                            <p><strong>Budget:</strong> $18,500</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 30%;"></div>
+                            </div>
+                            <p><strong>Progress:</strong> 30% Complete</p>
+                        </div>
+                        <div class="project-actions">
+                            <button class="btn btn-primary" onclick="editProject(2)">✏️ Edit</button>
+                            <button class="btn btn-secondary" onclick="viewProject(2)">👁️ View</button>
+                            <button class="btn btn-danger" onclick="deleteProject(2)">🗑️ Delete</button>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title">Website Redesign</div>
+                            <div class="project-status status-completed">Completed</div>
+                        </div>
+                        <div class="project-info">
+                            <p><strong>Client:</strong> Enterprise Ltd.</p>
+                            <p><strong>Deadline:</strong> February 28, 2024</p>
+                            <p><strong>Budget:</strong> $12,000</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                            <p><strong>Progress:</strong> 100% Complete</p>
+                        </div>
+                        <div class="project-actions">
+                            <button class="btn btn-primary" onclick="editProject(3)">✏️ Edit</button>
+                            <button class="btn btn-secondary" onclick="viewProject(3)">👁️ View</button>
+                            <button class="btn btn-danger" onclick="deleteProject(3)">🗑️ Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Messages Section -->
+            <div class="content-section" id="messages">
+                <div class="messages-container">
+                    <h3>Client Messages</h3>
+                    
+                    <div class="message-item">
+                        <div class="message-avatar">JD</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <div class="message-sender">John Doe - TechCorp Inc.</div>
+                                <div class="message-time">2 hours ago</div>
+                            </div>
+                            <div class="message-text">
+                                Hi! I wanted to check on the progress of our e-commerce platform. The stakeholders are excited to see the latest updates. Could we schedule a demo for next week?
+                            </div>
+                            <div class="message-actions">
+                                <button class="btn btn-primary" onclick="replyMessage(1)">💬 Reply</button>
+                                <button class="btn btn-secondary" onclick="markRead(1)">✅ Mark Read</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message-item">
+                        <div class="message-avatar">SM</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <div class="message-sender">Sarah Miller - StartupXYZ</div>
+                                <div class="message-time">5 hours ago</div>
+                            </div>
+                            <div class="message-text">
+                                The mobile app mockups look fantastic! However, we'd like to make some adjustments to the user flow. Can we set up a meeting to discuss the changes?
+                            </div>
+                            <div class="message-actions">
+                                <button class="btn btn-primary" onclick="replyMessage(2)">💬 Reply</button>
+                                <button class="btn btn-secondary" onclick="markRead(2)">✅ Mark Read</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message-item">
+                        <div class="message-avatar">RJ</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <div class="message-sender">Robert Johnson - Enterprise Ltd.</div>
+                                <div class="message-time">1 day ago</div>
+                            </div>
+                            <div class="message-text">
+                                Thank you for completing the website redesign ahead of schedule! The team is thrilled with the results. We'd love to discuss future projects with you.
+                            </div>
+                            <div class="message-actions">
+                                <button class="btn btn-primary" onclick="replyMessage(3)">💬 Reply</button>
+                                <button class="btn btn-secondary" onclick="markRead(3)">✅ Mark Read</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Section -->
+            <div class="content-section" id="analytics">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon" style="background: linear-gradient(45deg, #667eea, #764ba2);">📊</div>
+                        </div>
+                        <div class="stat-value">92%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon" style="background: linear-gradient(45deg, #4CAF50, #8BC34A);">⏱️</div>
+                        </div>
+                        <div class="stat-value">18.5</div>
+                        <div class="stat-label">Avg. Project Duration (days)</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon" style="background: linear-gradient(45deg, #FF9800, #FFC107);">🎯</div>
+                        </div>
+                        <div class="stat-value">87%</div>
+                        <div class="stat-label">On-Time Delivery</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon" style="background: linear-gradient(45deg, #E91E63, #9C27B0);">📈</div>
+                        </div>
+                        <div class="stat-value">+23%</div>
+                        <div class="stat-label">Growth This Month</div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Revenue Analytics</h3>
+                    <div class="chart">📈 Revenue Chart Would Display Here</div>
+                </div>
+
+                <div class="chart-container">
+                    <h3>Project Status Distribution</h3>
+                    <div class="chart">🥧 Pie Chart Would Display Here</div>
+                </div>
+            </div>
+
+            <!-- Clients Section -->
+            <div class="content-section" id="clients">
+                <div class="messages-container">
+                    <h3>Client Management</h3>
+                    
+                    <div class="message-item">
+                        <div class="message-avatar">TC</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <div class="message-sender">TechCorp Inc.</div>
+                                <div class="message-time">Active Client</div>
+                            </div>
+                            <div class="message-text">
+                                <strong>Projects:</strong> 3 Active, 2 Completed<br>
+                                <strong>Total Value:</strong> $67,500<br>
+                                <strong>Contact:</strong> john.doe@techcorp.com
+                            </div>
+                            <div class="message-actions">
+                                <button class="btn btn-primary" onclick="contactClient(1)">📞 Contact</button>
+                                <button class="btn btn-secondary" onclick="viewClientHistory(1)">📋 History</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message-item">
+                        <div class="message-avatar">SX</div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <div class="message-sender">StartupXYZ</div>
+                                <div class="message-time">Active Client</div>
+                            </div>
+                            <div class="message-text">
+                                <strong>Projects:</strong> 2 Active, 1 Completed<br>
+                                <strong>Total Value:</strong> $43,200<br>
+                                <strong>Contact:</strong> sarah.miller@startupxyz.com
+                            </div>
+                            <div class="message-actions">
+                                <button class="btn btn-primary" onclick="contactClient(2)">📞 Contact</button>
+                                <button class="btn btn-secondary" onclick="viewClientHistory(2)">📋 History</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="content-section" id="settings">
+                <div class="messages-container">
+                    <h3>System Settings</h3>
+                    
+                    <div class="filter-group" style="margin-bottom: 20px;">
+                        <label>Notification Preferences</label>
+                        <select>
+                            <option>Email + In-App</option>
+                            <option>Email Only</option>
+                            <option>In-App Only</option>
+                            <option>Disabled</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group" style="margin-bottom: 20px;">
+                        <label>Default Project Status</label>
+                        <select>
+                            <option>Pending</option>
+                            <option>Active</option>
+                            <option>In Review</option>
+                        </select>
+                    </div>
+
+                    <div class="project-actions">
+                        <button class="btn btn-primary" onclick="saveSettings()">💾 Save Settings</button>
+                        <button class="btn btn-secondary" onclick="exportData()">📤 Export Data</button>
+                        <button class="btn btn-danger" onclick="resetSettings()">🔄 Reset to Default</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+
+</body>
+</html>
